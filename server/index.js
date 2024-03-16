@@ -11,7 +11,15 @@ const port = 5000;
 
 const app = express();
 //app.use(express.json());
-app.use(cors());
+// app.use(cors());
+
+app.use(cors(
+  {
+    origin:["https://transcendent-griffin-71f020.netlify.app/"],
+    methods:['GET, POST, PUT, PATCH, DELETE'],
+    credentials:true
+  }
+));
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', process.env.CLIENT_URL);
